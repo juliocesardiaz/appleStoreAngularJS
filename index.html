@@ -1,0 +1,48 @@
+<!doctype html>
+<html ng-app="onlineShopper">
+  <head>
+    <title>Apples 4 Days</title>
+    <script src="lib/angular.min.js"></script>
+    <script src="app.js"></script>
+    <script src="js/OnlineShopperController.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="container" ng-controller="OnlineShopperCtrl">
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Apples 4 Days</h2>
+          <div ng-repeat="item in products">
+            <span ng-click="showAdd = true" ng-hide="showAdd">
+              <h4>{{item.name}}</h4>
+              <img src={{item.image}} width=200px >
+              <h5>{{item.price | currency: $ : 2}}</h5>
+              </span>
+              <div ng-show="showAdd">
+                <span ng-click="showAdd = false">
+                  <h4>{{item.name}}</h4>
+                  <img src={{item.image}} width=200px >
+                  <h5>{{item.price | currency: $ : 2}}</h5>
+                </span>
+                <button ng-click="addToCart(item)" class="btn btn-primary">Add To Cart</button>
+              </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h2>Cart:</h2>
+          <div ng-repeat="item in cart">
+            <span ng-click="showDelete = true" ng-hide="showDelete">
+              <h4>{{item.name}} {{item.price | currency: $ : 2}}</h4>
+            </span>
+            <div ng-show="showDelete">
+              <span ng-click="showDelete = false">
+                <h4>{{item.name}} {{item.price | currency: $ : 2}} <button ng-click="deleteFromCart(item)" class="btn btn-xs">Delete From Cart</button></h4>
+              </span>
+            </div>
+          </div>
+          <h3 ng-show="cart.length">Total: {{calculateTotal()  | currency: $ : 2}}</h3>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
