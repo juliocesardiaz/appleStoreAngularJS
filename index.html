@@ -31,9 +31,9 @@
         </div>
         <div class="col-md-6 test">
           <h2>Cart:</h2>
-          <div ng-repeat="item in cart">
+          <div ng-repeat="item in cart track by $index">
             <span ng-click="showDelete = true" ng-hide="showDelete">
-              <h4>{{item.name}} {{item.price | currency: $ : 2}}</h4>
+              <h5>{{item.name}} {{item.price | currency: $ : 2}}</h5>
             </span>
             <div ng-show="showDelete">
               <span ng-click="showDelete = false">
