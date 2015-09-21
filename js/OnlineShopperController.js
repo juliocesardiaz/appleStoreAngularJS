@@ -22,6 +22,27 @@ onlineShopper.controller('OnlineShopperCtrl', function OnlineShopperCtrl($scope)
       total += product.price;
     }, this);
     
+    if(total > 25) {
+      total *= 0.9;
+    }
     return total;
+  }
+  $scope.cost = 0;
+  $scope.calculateShipping = function(zip, total) {
+    var cost = 0;
+    if (total > 50) {
+      cost = 0;
+    } else if((zip <= 99999) && (zip >= 80000)) {
+      cost += 2;
+    } else if ((zip < 80000) && (zip >= 60000)) {
+      cost += 5;
+    } else if ((zip < 60000) && (zip >= 40000)) {
+      cost += 8;
+    } else if ((zip < 40000) && (zip >= 20000)) {
+      cost += 11;
+    } else if ((zip < 20000) && (zip >= 0)) {
+      cost += 14;
+    }
+    $scope.cost = cost;
   }
 });

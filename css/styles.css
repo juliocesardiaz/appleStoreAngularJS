@@ -1,5 +1,5 @@
-.total{
-    position: fixed;
-    margin-bottom: 10px;
-    top: 0;
+.fixed {
+    positon:fixed;
+    top: 100px;
+    left: 100px;
 }
